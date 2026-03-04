@@ -1,0 +1,5 @@
+# 使用国内 PyPI 镜像，避免安装卡住
+# 可选：阿里云 https://mirrors.aliyun.com/pypi/simple/
+[[index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
+default = true

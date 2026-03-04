@@ -1,4 +1,5 @@
 import json
+import os
 from abc import ABC, abstractmethod
 
 from langchain_ollama.chat_models import ChatOllama  # 导入 ChatOllama 模型
@@ -54,9 +55,9 @@ class AgentBase(ABC):
             MessagesPlaceholder(variable_name="messages"),  # 消息占位符
         ])
 
-        # 初始化 ChatOllama 模型，配置参数
+        # 初始化 ChatOllama 模型，配置参数（模型名可通过环境变量 OLLAMA_MODEL 覆盖）
         self.chatbot = system_prompt | ChatOllama(
-            model="llama3.1:8b-instruct-q8_0",  # 使用的模型名称
+            model=os.environ.get("OLLAMA_MODEL", "deepseek-r1:latest"),
             max_tokens=8192,  # 最大生成的 token 数
             temperature=0.8,  # 随机性配置
         )

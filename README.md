@@ -50,6 +50,15 @@ https://github.com/user-attachments/assets/6298a8e4-28fc-4a60-badc-59bff16b315e
 
    根据需要配置你的环境变量，例如 `OpenAI_API_KEY` 等。
 
+   **使用 uv（推荐）**
+   若已安装 [uv](https://github.com/astral-sh/uv)，可在项目根目录执行：
+   ```bash
+   uv venv                    # 创建虚拟环境 .venv
+   source .venv/bin/activate  # 激活（Windows: .venv\Scripts\activate）
+   uv pip install -r requirements.txt
+   ```
+   项目内已配置 `uv.toml` 使用清华镜像，安装更快。之后运行应用同下。
+
 4. **运行应用**
    启动应用程序：
    ```bash

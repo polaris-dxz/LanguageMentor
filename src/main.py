@@ -1,3 +1,12 @@
+# 修复 Gradio 4.43 + gradio_client 对布尔 schema 的 bug（get_type 收到 bool 会报错）
+import gradio_client.utils as _gc_utils
+_get_type_orig = _gc_utils.get_type
+def _get_type_patched(schema):
+    if isinstance(schema, bool):
+        return "boolean"
+    return _get_type_orig(schema)
+_gc_utils.get_type = _get_type_patched
+
 import gradio as gr
 from tabs.scenario_tab import create_scenario_tab
 from tabs.conversation_tab import create_conversation_tab
@@ -10,8 +19,8 @@ def main():
         create_conversation_tab()
         create_vocab_tab()
     
-    # 启动应用
-    language_mentor_app.launch(share=True, server_name="0.0.0.0")
+    # 启动应用（share=False 仅本机访问，避免依赖 frpc 分享链接）
+    language_mentor_app.launch(share=False, server_name="0.0.0.0")
 
 if __name__ == "__main__":
     main()
