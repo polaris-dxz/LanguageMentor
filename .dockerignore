@@ -1,0 +1,28 @@
+# Git 与 IDE
+.git
+.gitignore
+.venv
+venv
+__pycache__
+*.pyc
+.pytest_cache
+.coverage
+htmlcov
+
+# 文档与开发
+docs/
+*.md
+!README.md
+tests/
+scripts/
+requirements-dev.txt
+uv.toml
+
+# 日志与本地资源
+logs/
+*.log
+images/
+
+# 其他
+.DS_Store
+*.swp
