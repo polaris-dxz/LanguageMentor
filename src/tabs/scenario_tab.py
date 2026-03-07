@@ -8,7 +8,10 @@ from utils.logger import LOG
 agents = {
     "job_interview": ScenarioAgent("job_interview"),
     "hotel_checkin": ScenarioAgent("hotel_checkin"),
-    # 可以根据需要添加更多场景代理
+    "salary_negotiation": ScenarioAgent("salary_negotiation"),
+    "renting": ScenarioAgent("renting"),
+    "leave_request": ScenarioAgent("leave_request"),
+    "airport_checkin": ScenarioAgent("airport_checkin"),
 }
 
 def get_page_desc(scenario):
@@ -42,12 +45,14 @@ def create_scenario_tab():
         # 创建单选框组件
         scenario_radio = gr.Radio(
             choices=[
-                ("求职面试", "job_interview"),  # 求职面试选项
-                ("酒店入住", "hotel_checkin"),  # 酒店入住选项
-                # ("薪资谈判", "salary_negotiation"),  # 薪资谈判选项（注释掉）
-                # ("租房", "renting")  # 租房选项（注释掉）
-            ], 
-            label="场景"  # 单选框标签
+                ("求职面试", "job_interview"),
+                ("酒店入住", "hotel_checkin"),
+                ("薪资谈判", "salary_negotiation"),
+                ("租房", "renting"),
+                ("单位请假", "leave_request"),
+                ("机场托运", "airport_checkin"),
+            ],
+            label="场景"
         )
 
         scenario_intro = gr.Markdown()  # 场景介绍文本组件
