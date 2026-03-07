@@ -65,6 +65,21 @@ https://github.com/user-attachments/assets/6298a8e4-28fc-4a60-badc-59bff16b315e
    python src/main.py
    ```
 
+### 故障排除：Pillow 安装失败（找不到 jpeg）
+
+若安装依赖时出现 `The headers or library files could not be found for jpeg`，说明 Pillow 在从源码编译时缺少系统库。可任选其一：
+
+- **推荐**：使用 Python 3.10～3.12（如 README 中的 `conda create -n lm python=3.10`），这些版本通常有 Pillow 预编译包，无需编译。
+- **从源码编译时**：在 macOS 上需先安装 libjpeg，再安装依赖：
+  ```bash
+  brew install jpeg
+  pip install -r requirements.txt
+  ```
+  若 `brew install` 报权限错误，需先修复 Homebrew 目录权限（需输入密码）：
+  ```bash
+  sudo chown -R $(whoami) /opt/homebrew /Users/duxizhi/Library/Logs/Homebrew
+  ```
+
 5. **开始体验**
    打开浏览器，访问 `http://localhost:7860`，开始跟着 LanguageMentor 一起学习英语！
 
